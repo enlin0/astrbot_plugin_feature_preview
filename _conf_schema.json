@@ -1,0 +1,138 @@
+{
+  "enabled": {
+    "description": "启用功能预览",
+    "type": "bool",
+    "default": true,
+    "hint": "关闭后既不会响应触发词，也不会响应 /功能 指令。修改后立即生效。"
+  },
+  "trigger_words": {
+    "description": "触发词列表",
+    "type": "list",
+    "default": [
+      "你可以做什么",
+      "你能做什么",
+      "你会什么",
+      "你有什么功能",
+      "你有哪些功能",
+      "有什么功能",
+      "有什么插件",
+      "插件列表",
+      "功能列表"
+    ],
+    "hint": "用户消息命中其中任意一个词就回复插件清单。默认使用包含匹配，可以按需增删。修改后立即生效。"
+  },
+  "match_mode": {
+    "description": "触发匹配方式",
+    "type": "string",
+    "default": "contains",
+    "options": [
+      "contains",
+      "exact",
+      "regex"
+    ],
+    "labels": [
+      "包含匹配",
+      "完全匹配",
+      "正则匹配"
+    ],
+    "hint": "contains=消息中出现触发词即触发；exact=整条消息（忽略空白和标点）等于触发词；regex=每个触发词按正则表达式匹配。"
+  },
+  "require_at_in_group": {
+    "description": "群聊中需要 @ 或唤醒前缀",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后，群聊里只有 @Bot、引用 Bot 消息或使用唤醒前缀时才会触发；私聊不受影响。"
+  },
+  "display_mode": {
+    "description": "插件展示策略",
+    "type": "string",
+    "default": "auto",
+    "options": [
+      "auto",
+      "whitelist",
+      "blacklist"
+    ],
+    "labels": [
+      "自动（全部已启用）",
+      "白名单",
+      "黑名单"
+    ],
+    "hint": "auto=展示所有已启用且非内置的插件；whitelist=只展示白名单中的插件（白名单为空时等同 auto）；blacklist=展示除黑名单之外的插件。"
+  },
+  "whitelist": {
+    "description": "白名单插件",
+    "type": "list",
+    "default": [],
+    "hint": "仅在展示策略为 whitelist 时生效。可填插件名（如 astrbot_plugin_lolicon）、目录名、展示名，或去掉 astrbot_plugin_ 前缀的短名（如 lolicon）。"
+  },
+  "blacklist": {
+    "description": "黑名单插件",
+    "type": "list",
+    "default": [],
+    "hint": "无论哪种展示策略都会排除这些插件。填写方式同白名单。"
+  },
+  "show_disabled": {
+    "description": "展示已停用插件",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后，已停用的插件也会出现在清单里，并标注“（已停用）”。"
+  },
+  "show_builtin": {
+    "description": "展示 AstrBot 内置插件",
+    "type": "bool",
+    "default": false,
+    "hint": "内置插件（如内置指令、AstrBot 基础能力）默认不展示。"
+  },
+  "include_self": {
+    "description": "展示本插件自身",
+    "type": "bool",
+    "default": false,
+    "hint": "开启后，“功能预览”自己也会出现在清单里。"
+  },
+  "max_plugins": {
+    "description": "最多展示数量",
+    "type": "int",
+    "default": 30,
+    "slider": {
+      "min": 0,
+      "max": 100,
+      "step": 1
+    },
+    "hint": "超过该数量的插件会被截断；填 0 表示不限制。"
+  },
+  "max_desc_length": {
+    "description": "简介最大长度",
+    "type": "int",
+    "default": 120,
+    "slider": {
+      "min": 0,
+      "max": 500,
+      "step": 10
+    },
+    "hint": "过长的简介会被截断并追加省略号；填 0 表示不限制。"
+  },
+  "reply_header": {
+    "description": "回复开头",
+    "type": "string",
+    "default": "本 Bot 目前已安装这些插件：",
+    "hint": "支持 {count} 占位符；留空则不显示开头。"
+  },
+  "item_format": {
+    "description": "单条插件格式",
+    "type": "string",
+    "default": "{index}. {name}{status}：{desc}",
+    "hint": "可用占位符：{index} 序号、{name} 展示名、{plugin_name} 插件名、{id} 插件 ID、{desc} 简介、{version} 版本、{author} 作者、{status} 停用标记。"
+  },
+  "reply_footer": {
+    "description": "回复结尾",
+    "type": "string",
+    "default": "共 {count} 个插件。",
+    "hint": "支持 {count} 占位符；留空则不显示结尾。"
+  },
+  "empty_reply": {
+    "description": "没有可展示插件时的回复",
+    "type": "string",
+    "default": "暂时没有可以展示的插件。",
+    "hint": "当过滤后没有任何插件时使用。"
+  }
+}

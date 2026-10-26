@@ -1,0 +1,23 @@
+name: astrbot_plugin_feature_preview
+display_name: 功能预览
+short_desc: 让 Bot 说出自己装了哪些插件、各自能做什么。
+desc: 读取已安装插件的名称与简介，在用户询问“你可以做什么”“你有什么功能”等触发词时回复功能清单。支持自动、白名单、黑名单三种展示策略，可过滤停用插件与内置插件、限制条数和简介长度，并可通过 /功能 指令手动查看。
+version: 1.0.0
+author: 胖头鱼
+astrbot_version: ">=4.16,<5"
+support_platforms:
+  - aiocqhttp
+  - qq_official
+  - qq_official_webhook
+  - telegram
+  - wecom
+  - wecom_ai_bot
+  - lark
+  - dingtalk
+  - discord
+  - slack
+  - kook
+  - satori
+  - misskey
+  - matrix
+  - webchat
